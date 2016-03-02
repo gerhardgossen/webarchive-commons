@@ -79,7 +79,7 @@ public abstract class ArchiveReader implements ArchiveFileConstants, Iterable<Ar
      * If more than this amount in a row, we'll let out the exception rather
      * than go back in for yet another retry.
      */
-    public static final int MAX_ALLOWED_RECOVERABLES = 10;
+    public static final int MAX_ALLOWED_RECOVERABLES = 20;
     
 
     /**

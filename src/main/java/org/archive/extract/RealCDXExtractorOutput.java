@@ -314,7 +314,7 @@ public class RealCDXExtractorOutput implements ExtractorOutput {
 			URL cUrl = new URL(context);
 			URL url = new URL(cUrl, spec);
 			// this constructor escapes its arguments, if necessary
-			URI uri = new URI(url.getProtocol(), url.getHost(), url.getPath(), url.getQuery(), url.getRef());
+			URI uri = new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), url.getRef());
 			return uri.toASCIIString();
 			
 		} catch (URISyntaxException e) {			

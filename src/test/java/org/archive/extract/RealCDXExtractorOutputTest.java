@@ -25,4 +25,18 @@ public class RealCDXExtractorOutputTest extends TestCase {
 	String resolved = RealCDXExtractorOutput.resolve(spec, spec);
 	assertTrue(spec.equals(resolved));
     }
+    
+    public void ignoreTestMoreBrokenUrls() throws Exception {
+	String[] tests = new String[] { "mailto: john.doe@uni-oldenburg.de", 
+	"mailto:john.doe @Informatik.Uni-Oldenburg.DE",
+	"mailto:john.doe@blicher Tbinger Anhang",
+	"mailto:john.doe@uni-oldenburg.de?subject=Antrag auf SAP Zugang",
+	"E:/SmartSource Data Collector/util/content/wt_dcs.gif",
+	"ttp://find.galegroup.com/bncn/infomark.do?serQuery=Locale%28en%2C%2C%29%3AFQE%3D%28JX%2CNone%2C16%29%22Dublin Gazette%22%24&queryType=PH&type=pubIssues&prodId=BBCN&version=1.0&source=library"};
+	for (String test : tests) {
+		String escaped = RealCDXExtractorOutput.resolve(null, test);
+		System.out.println(test + " -> " + escaped);
+		assertTrue(escaped.indexOf(" ") < 0);
+	}
+    }
 }
